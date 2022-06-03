@@ -20,14 +20,14 @@ public class InicioService {
         }
     }
 
-    public List<Player> buscarJugadores () throws SQLException, ClassNotFoundException {
-        try (Connection con = new MySQLConnector().getMySQLConnection()) {
-
-           return new PlayerManagerImpl().findAll(con);
-        } catch (SQLException | ClassNotFoundException e) {
-            throw e;
-        }
-    }
+//    public List<Player> buscarJugadores () throws SQLException, ClassNotFoundException {
+//        try (Connection con = new MySQLConnector().getMySQLConnection()) {
+//
+//           return new PlayerManagerImpl().findAll(con);
+//        } catch (SQLException | ClassNotFoundException e) {
+//            throw e;
+//        }
+//    }
 
     public boolean validarJugador(String nombre, String contraseña) throws SQLException, ClassNotFoundException {
         try (Connection con = new MySQLConnector().getMySQLConnection()) {
