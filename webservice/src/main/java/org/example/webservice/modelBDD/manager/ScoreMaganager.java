@@ -12,5 +12,5 @@ public interface ScoreMaganager {
 
     public List<Score> findAll(Connection con);
 
-    public void Insert(Connection con, int puntuacion, LocalDateTime fecha, int idplayer);
+    public void Insert(Connection con, int puntuacion, int idplayer);
 }

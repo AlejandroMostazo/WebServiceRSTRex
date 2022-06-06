@@ -14,6 +14,7 @@ import java.time.ZoneId;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Score implements Comparable<Score>{
 
     int id;

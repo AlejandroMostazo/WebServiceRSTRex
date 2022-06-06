@@ -204,9 +204,9 @@ public class ScoreManagerImpl implements ScoreMaganager {
 //        }
 //    }
 //
-    public void Insert(Connection con, int puntuacion, LocalDateTime fecha, int idplayer) {
+    public void Insert(Connection con, int puntuacion, int idplayer) {
 
-            String sql = ("INSERT INTO juego.score (puntuacion, score.date, idplayer) VALUE('"+puntuacion+"', '"+fecha+"', "+idplayer+")");
+            String sql = ("INSERT INTO juego.score (puntuacion, score.date, idplayer) VALUE('"+puntuacion+"', '"+LocalDateTime.now()+"', "+idplayer+")");
             //prepare SQL statement
             try(PreparedStatement st = con.prepareStatement(sql)) {
                 //Set before first registry before going through it.

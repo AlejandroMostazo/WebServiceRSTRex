@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 
 public class PrimaryService {
 
-    public void insertarPuntuacion(int puntuacion, LocalDateTime fecha, int idplayer) {
+    public void insertarPuntuacion(int puntuacion, int idplayer) {
         try (Connection con = new MySQLConnector().getMySQLConnection()) {
-            new ScoreManagerImpl().Insert(con, puntuacion, fecha, idplayer);
+            new ScoreManagerImpl().Insert(con, puntuacion, idplayer);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

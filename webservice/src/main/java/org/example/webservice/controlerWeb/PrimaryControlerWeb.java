@@ -33,11 +33,11 @@ public class PrimaryControlerWeb {
 
 
     @GET
-    @Path("/score/{puntuacion}/{fecha}/{idplayer}")
+    @Path("/score/{puntuacion}/{idplayer}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insertScore(@PathParam("puntuacion") int punt, @PathParam("fecha") Date fecha, @PathParam("idplayer") int id) throws SQLException, ClassNotFoundException {
-         new PrimaryService().insertarPuntuacion(punt, fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(), id);
+    public void insertScore(@PathParam("puntuacion") int punt, @PathParam("idplayer") int id) {
+         new PrimaryService().insertarPuntuacion(punt, id);
     }
 
 
