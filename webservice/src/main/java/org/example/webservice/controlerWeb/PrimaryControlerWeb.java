@@ -32,7 +32,7 @@ public class PrimaryControlerWeb {
 
 
 
-    @GET
+    @POST
     @Path("/score/{puntuacion}/{idplayer}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

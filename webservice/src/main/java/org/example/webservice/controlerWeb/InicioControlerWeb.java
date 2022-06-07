@@ -2,9 +2,11 @@ package org.example.webservice.controlerWeb;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import org.example.webservice.modelBDD.dao.Player;
 import org.example.webservice.services.InicioService;
 
+import java.awt.geom.RectangularShape;
 import java.sql.SQLException;
 
 /**
@@ -26,18 +28,18 @@ public class InicioControlerWeb {
     }
 
     @POST
-    @Path("/insertar/{nombre}/{contraseña}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insertPlayer(@PathParam("nombre") String name, @PathParam("contraseña") String pass) {
-        new InicioService().insertarJugador(name, pass);
+    public Response insertPlayer(Player player) {
+        new InicioService().insertarJugador(player.getName(), player.getContraseña());
+        return Response.status(201).build();
     }
 
-    @GET
-    @Path("/validar/{nombre}/{contraseña}")
+    @POST
+    @Path("/validar")
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean checkPlayer(@PathParam("nombre") String name, @PathParam("contraseña") String pass) throws SQLException, ClassNotFoundException {
-        return new InicioService().validarJugador(name, pass);
+    public boolean checkPlayer(Player player) throws SQLException, ClassNotFoundException {
+        return new InicioService().validarJugador(player.getName(), player.getContraseña());
     }
 
     @GET

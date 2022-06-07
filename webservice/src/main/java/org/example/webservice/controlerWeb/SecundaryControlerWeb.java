@@ -3,8 +3,7 @@ package org.example.webservice.controlerWeb;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.example.webservice.modelBDD.dao.Join;
-import org.example.webservice.modelBDD.dao.Player;
-import org.example.webservice.services.InicioService;
+
 import org.example.webservice.services.SecondaryService;
 
 import java.sql.SQLException;
