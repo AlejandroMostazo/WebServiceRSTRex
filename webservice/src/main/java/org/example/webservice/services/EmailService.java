@@ -6,6 +6,8 @@ import org.example.webservice.modelBDD.dao.Join;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.IntStream;
 
 public class EmailService {
     public void sendEmail(String email, String nombre) {
@@ -30,15 +32,12 @@ public class EmailService {
 
     public String obtenerRanking (int id) throws SQLException, ClassNotFoundException {
         List<Join> list = new SecondaryService().rankingById(id);
-        String tabla = "";
-        for (int i = 0; i < list.size(); i++) {
-                tabla = tabla+"<tr><td style=\"border: 1px solid black\">"+list.get(i).getPuesto()+"</td>" +
-                        "<td style=\"border: 1px solid black\">"+list.get(i).getNombre()+"</td>" +
-                        "<td style=\"border: 1px solid black\">"+list.get(i).getPuntuacion()+"</td>" +
-                        "<td style=\"border: 1px solid black\">"+list.get(i).getFecha()+"</td>";
-            tabla = tabla+"</tr>";
-        }
-        return tabla;
+        AtomicReference<String> tabla = new AtomicReference<>("");
+        IntStream.range(0, list.size()).forEach(i -> tabla.set(tabla + "<tr><td style=\"border: 1px solid black\">" + list.get(i).getPuesto() + "</td>" +
+                "<td style=\"border: 1px solid black\">" + list.get(i).getNombre() + "</td>" +
+                "<td style=\"border: 1px solid black\">" + list.get(i).getPuntuacion() + "</td>" +
+                "<td style=\"border: 1px solid black\">" + list.get(i).getFecha() + "</td></tr>"));
+        return tabla.get();
     }
 
 }
