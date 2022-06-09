@@ -99,7 +99,7 @@ public class PlayerTest {
     @Test
     public void allArgConstructor_ok(){
         assumeTrue(player != null);
-        Player player1 = new Player(player.getId(), player.getName(),  player.getContraseña());
+        Player player1 = new Player(player.getId(), player.getName(),  player.getContraseña(), player.getEmail());
        assertThat(player, is(player1));
     }
 

@@ -3,10 +3,9 @@ package org.example.webservice.controlerWeb;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.example.webservice.modelBDD.dao.Player;
+import org.example.webservice.controlerWeb.dto.Player;
 import org.example.webservice.services.InicioService;
 
-import java.awt.geom.RectangularShape;
 import java.sql.SQLException;
 
 /**
@@ -31,7 +30,7 @@ public class InicioControlerWeb {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response insertPlayer(Player player) {
-        new InicioService().insertarJugador(player.getName(), player.getContraseña());
+        new InicioService().insertarJugador(player.getName(), player.getContraseña(), player.getEmail());
         return Response.status(201).build();
     }
 
@@ -45,7 +44,7 @@ public class InicioControlerWeb {
     @GET
     @Path("/search/{nombre}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Player searchPlayer(@PathParam("nombre") String name) throws SQLException, ClassNotFoundException {
+    public org.example.webservice.modelBDD.dao.Player searchPlayer(@PathParam("nombre") String name) throws SQLException, ClassNotFoundException {
         return new InicioService().buscarJugadorByName(name);
     }
 

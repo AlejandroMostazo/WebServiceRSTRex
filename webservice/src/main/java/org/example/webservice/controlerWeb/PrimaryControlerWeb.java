@@ -3,14 +3,11 @@ package org.example.webservice.controlerWeb;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
+
+import org.example.webservice.controlerWeb.dto.Score;
 import org.example.webservice.services.PrimaryService;
 
 
-import java.sql.Date;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -33,11 +30,11 @@ public class PrimaryControlerWeb {
 
 
     @POST
-    @Path("/score/{puntuacion}/{idplayer}")
+    @Path("/score")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insertScore(@PathParam("puntuacion") int punt, @PathParam("idplayer") int id) {
-         new PrimaryService().insertarPuntuacion(punt, id);
+    public void insertScore(Score score) {
+         new PrimaryService().insertarPuntuacion(score.getPuntuacion(), score.getPlayer());
     }
 
 

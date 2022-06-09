@@ -15,6 +15,8 @@ public class Player implements Comparable<Player>{
     String name;
     String contraseña;
 
+    String email;
+
 
 
     public Player(ResultSet result) {
@@ -22,6 +24,7 @@ public class Player implements Comparable<Player>{
             this.id = result.getInt("id");
             this.name = result.getString("nombre");
             this.contraseña = result.getString("contraseña");
+            this.email = result.getString("email");
         } catch (SQLException e) {
             System.out.println("No se puede acceder a la tabla Player de la base de datos");
             e.printStackTrace();

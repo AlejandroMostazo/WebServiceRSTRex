@@ -14,7 +14,7 @@ public interface PlayerMaganager {
 
     public Player validatePlayer(Connection con, String name, String contraseña);
 
-    public void insert(Connection con, String nombre, String contraseña);
+    public void insert(Connection con, String nombre, String contraseña, String email);
 
 
 

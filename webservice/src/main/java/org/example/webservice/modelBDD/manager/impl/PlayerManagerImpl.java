@@ -242,14 +242,15 @@ public class PlayerManagerImpl implements PlayerMaganager {
 //        }
 //    }
 //
-    public void insert(Connection con, String nombre, String contraseña) {
+    public void insert(Connection con, String nombre, String contraseña, String email) {
 
-            String sql = ("INSERT INTO juego.player (nombre, contraseña) VALUE(?, ?)");
+            String sql = ("INSERT INTO juego.player (nombre, contraseña, email) VALUE(?, ?, ?)");
             //prepare SQL statement
             try(PreparedStatement st = con.prepareStatement(sql)) {
 
                 st.setString(1, nombre);
                 st.setString(2, contraseña);
+                st.setString(3, email);
 
                 //Set before first registry before going through it.
                 st.executeUpdate();
